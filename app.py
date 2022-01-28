@@ -7,7 +7,7 @@ with open('db.json') as json_file:
     dbrooms = json.load(json_file)
 
 
-MAX_ITEMS = 3
+MAX_ITEMS = 15
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -16,7 +16,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route("/districts")
 @cross_origin()
 def districts():
-    print(type(db.keys()))
     return jsonify(["pechersky", "svytoshinsky", "desnyansky"])
 
 @app.route("/rooms/<string:id>")
@@ -32,8 +31,3 @@ def rooms():
     print(type(dbrooms))
     return jsonify(dbrooms[:MAX_ITEMS])
 
-
-@app.route("/roomsold/<string:id>")
-@cross_origin()
-def roomsold(id):
-    return jsonify(db[id])
