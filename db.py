@@ -3,6 +3,7 @@ import json
 with open('db.json') as json_file:
     rooms = json.load(json_file)
 
+print(rooms[:3])
 print(len(rooms))
 filtered = [x for x in rooms if x['district']=='Оболонь']
 print(len(filtered))
