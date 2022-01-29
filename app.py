@@ -25,6 +25,12 @@ def rooms_by_district(id):
     filtered = [x for x in dbrooms if x['district'] == id]
     return jsonify(filtered[:MAX_ITEMS])
 
+@app.route("/rooms_bystation/<string:mstation>")
+@cross_origin()
+def rooms_by_station(mstation):
+    filtered = [x for x in dbrooms if x['mstation'] == mstation]
+    return jsonify(filtered[:MAX_ITEMS])
+
 
 @app.route("/rooms")
 @cross_origin()
